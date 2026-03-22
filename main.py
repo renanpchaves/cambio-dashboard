@@ -3,6 +3,7 @@ from services.exchange import (
     exchange_service
     )
 import requests
+from fastapi.middleware.cors import CORSMiddleware
 
 # =================================================
 # CONFIG DA APLICAÇÃO
@@ -12,6 +13,14 @@ app = FastAPI(
     title="Câmbio - Dashboard API",
     description="API para consulta de cotação USD-BRL",
     version="0.1.0" #beta
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    alow_headers=["*"]
 )
 
 # =================================================
