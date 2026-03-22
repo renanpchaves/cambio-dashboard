@@ -1,4 +1,5 @@
 import requests
+from fastapi import HTTPException
 
 class ExchangeService:
     BASE_URL = "https://economia.awesomeapi.com.br"
@@ -7,26 +8,34 @@ class ExchangeService:
         """
         Busca a cotação USD-BRL na awesomeAPI e retorna dados formatados.
         """
-        url = f"{self.BASE_URL}/last/USD-BRL"
+        try:
+            url = f"{self.BASE_URL}/last/USD-BRL"
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
 
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
+            data = response.json()
+            usd = data.get("USDBRL")
+            if not usd:
+                raise HTTPException (status_code=502,detail=f'Resposta inválida da API externa.')
 
-        data = response.json()
-        usd = data["USDBRL"]
-
-        return {
-            "code": usd["code"], #código base (USD)
-            "codein": usd["codein"], #código da moeda de destino (BRL)
-            "name": usd["name"], #nome completo do par de moedas
-            "bid": float(usd["bid"]), #preço de compra (quanto o mercado paga)
-            "ask": float(usd["ask"]), #preço de venda (quanto o mercado cobra)
-            "high": float(usd["high"]), #maior valor do dia
-            "low": float(usd["low"]), #menor valor do dia
-            "pctChange": float(usd["pctChange"]), #variação em % no dia
-            "timestamp": usd["timestamp"], #timestamp Unix da cotação
-            "create_date": usd["create_date"] #data/hora formatada da cotação
-        }
+            return {
+                "code": usd["code"], #código base (USD)
+                "codein": usd["codein"], #código da moeda de destino (BRL)
+                "name": usd["name"], #nome completo do par de moedas
+                "bid": float(usd["bid"]), #preço de compra (quanto o mercado paga)
+                "ask": float(usd["ask"]), #preço de venda (quanto o mercado cobra)
+                "high": float(usd["high"]), #maior valor do dia
+                "low": float(usd["low"]), #menor valor do dia
+                "pctChange": float(usd["pctChange"]), #variação em % no dia
+                "timestamp": int(usd["timestamp"]), #timestamp Unix da cotação
+                "create_date": usd["create_date"] #data/hora formatada da cotação
+            }
+        except requests.exceptions.HTTPError as e:
+            raise HTTPException(status_code=502,detail=f'Erro ao consumir API externa: {e}')
+        except requests.exceptions.RequestException as e:
+            raise HTTPException(status_code=503,detail=f'Serviço temporariamente indisponível: {e}')
+        except KeyError as e:
+            raise HTTPException(status_code=500, detail=f'Resposta inesperada da API: {e}')
 
 #INSTANCIA DO SERVIÇO:
 exchange_service = ExchangeService()
