@@ -1,0 +1,38 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+
+venv/
+.env/
+.env.*
+
+# VS Code
+
+.vscode/
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Cache / temp
+
+*.cache/
+*.tmp/
+
+# Arquivos de ambiente
+
+.env
+
+# Outros
+
+*.bak
