@@ -22,11 +22,11 @@ class ExchangeService:
                 "code": usd["code"], #código base (USD)
                 "codein": usd["codein"], #código da moeda de destino (BRL)
                 "name": usd["name"], #nome completo do par de moedas
-                "bid": float(usd["bid"]), #preço de compra (quanto o mercado paga)
-                "ask": float(usd["ask"]), #preço de venda (quanto o mercado cobra)
-                "high": float(usd["high"]), #maior valor do dia
-                "low": float(usd["low"]), #menor valor do dia
-                "pctChange": float(usd["pctChange"]), #variação em % no dia
+                "bid": f"R$ {float(usd["bid"]):.2f}", #preço de compra (quanto o mercado paga)
+                "ask": f"R$ {float(usd["ask"]):.2f}", #preço de venda (quanto o mercado cobra)
+                "high": f"R$ {float(usd["high"]):.2f}", #maior valor do dia
+                "low": f"R$ {float(usd["low"]):.2f}", #menor valor do dia
+                "pctChange": f"{float(usd["pctChange"]):.3f}", #variação em % no dia
                 "timestamp": int(usd["timestamp"]), #timestamp Unix da cotação
                 "create_date": usd["create_date"] #data/hora formatada da cotação
             }
