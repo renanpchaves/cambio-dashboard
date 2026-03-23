@@ -35,3 +35,6 @@ const formatarData = (dataISO) => {
 };
 
 loadExchange()
+
+//atualizando a Dashboard
+document.getElementById("refreshButton").addEventListener("click", loadExchange);
