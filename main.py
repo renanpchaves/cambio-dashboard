@@ -43,7 +43,8 @@ def root():
         "docs_interativo": "/docs"
     }
 
-@app.get("/exchange/cotacao")
+#USD
+@app.get("/exchange/cotacao/usd")
 def get_usd_brl():
     """
     Retorna cotação atual USD em relação ao BRL, consumindo awesomeAPI.
@@ -55,6 +56,25 @@ def get_usd_brl():
     """
     try:
         return exchange_service.get_usd_brl()
+    except requests.RequestException as e:
+        raise HTTPException(
+            status_code=502,
+            detail=f"Erro ao consultar a API externa: {str(e)}"
+        )
+
+#EUR
+@app.get("/exchange/cotacao/eur")
+def get_eur_brl():
+    """
+    Retorna cotação atual EUR em relação ao BRL, consumindo awesomeAPI.
+
+    1. Requisição HTTP para API externa
+    2. Valida se a resposta foi ok
+    3. Extrai dados relevantes
+    4. Retorna um JSON para o cliente
+    """
+    try:
+        return exchange_service.get_eur_brl()
     except requests.RequestException as e:
         raise HTTPException(
             status_code=502,

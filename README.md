@@ -1,12 +1,12 @@
 # 💱 Câmbio Dashboard
 
-Dashboard simples para visualização da cotação USD → BRL em tempo real, utilizando FastAPI no backend e JavaScript no frontend.
+Dashboard simples para visualização da cotação em tempo real, utilizando FastAPI no backend e JavaScript no frontend.
 
 ---
 
 ## 🚀 Funcionalidades
 
-* Consulta de cotação USD-BRL em tempo real
+* Consulta de cotação em tempo real
 * Exibição de:
   * Preço de compra e venda
   * Máxima e mínima do dia
@@ -77,7 +77,7 @@ python main.py
 A API estará disponível em:
 
 ```
-http://localhost:8000
+http://localhost:8000/
 ```
 
 ---

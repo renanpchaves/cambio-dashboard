@@ -1,7 +1,7 @@
 //Função principal de captura dos dados do back-end
 async function loadExchange() {
     try{
-    const response = await fetch("http://localhost:8000/exchange/cotacao");
+    const response = await fetch("http://localhost:8000/exchange/cotacao/usd");
 
     if (!response.ok) {
         throw new Error("Erro na requisição!");
