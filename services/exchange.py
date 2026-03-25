@@ -6,7 +6,7 @@ class ExchangeService:
 
     def get_exchange_rate(self, currency: str = "USD"):
         """
-        Busca a cotação USD-BRL na awesomeAPI e retorna dados formatados.
+        Busca a cotação na awesomeAPI e retorna dados formatados.
 
         Args:
             currency (str): Código da moeda (USD, EUR, GBP, etc.)
@@ -30,7 +30,7 @@ class ExchangeService:
                 raise HTTPException (status_code=502,detail=f'Resposta inválida da API externa para: {pair}')
 
             return {
-                "code": exchange_data["code"], #código base (USD)
+                "code": exchange_data["code"], #código base 
                 "codein": exchange_data["codein"], #código da moeda de destino (BRL)
                 "name": exchange_data["name"], #nome completo do par de moedas
                 "bid": f"R$ {float(exchange_data["bid"]):.2f}", #preço de compra (quanto o mercado paga)
