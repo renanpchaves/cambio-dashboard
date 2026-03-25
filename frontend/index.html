@@ -7,39 +7,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="carousel-container">
+    <main class="carousel-container">
       <button id="prevButton" class="prevButton">←</button>
 
       <!-- wrapper -->
       <div class="carousel-wrapper">
         <div class="carousel-track">
-          <div class="container">
-            <!-- card -->
-            <section class="card active">
-              <h1>Cambio Dashboard</h1>
-              <h2>Cotação <span id="currency-label">USD</span> → BRL</h2>
-              <!-- div info -->
-              <div class="info-grid">
-                <p><strong>Nome:</strong><span id="name"> -- </span></p>
-                <p><strong>Compra:</strong><span id="bid"> -- </span></p>
-                <p><strong>Venda:</strong><span id="ask"> -- </span></p>
-                <p><strong>Máxima:</strong><span id="high"> -- </span></p>
-                <p><strong>Mínima:</strong><span id="low"> -- </span></p>
-                <p>
-                  <strong>Variação:</strong><span id="pctChange"> -- </span>
-                </p>
-                <p>
-                  <strong>Atualizado em:</strong
-                  ><span id="create_date"> -- </span>
-                </p>
-              </div>
-              <button id="refreshButton">Atualizar cotação</button>
-            </section>
-          </div>
+          <!-- card -->
+          <section class="card active">
+            <h1>Cambio Dashboard</h1>
+            <h2>Cotação <span id="currency-label">USD</span> → BRL</h2>
+            <!-- div info -->
+            <div class="info-grid">
+              <p><strong>Nome:</strong><span id="name"> -- </span></p>
+              <p><strong>Compra:</strong><span id="bid"> -- </span></p>
+              <p><strong>Venda:</strong><span id="ask"> -- </span></p>
+              <p><strong>Máxima:</strong><span id="high"> -- </span></p>
+              <p><strong>Mínima:</strong><span id="low"> -- </span></p>
+              <p><strong>Variação:</strong><span id="pctChange"> -- </span></p>
+              <p>
+                <strong>Atualizado em:</strong
+                ><span id="create_date"> -- </span>
+              </p>
+            </div>
+            <button id="refreshButton">Atualizar cotação</button>
+          </section>
         </div>
       </div>
       <button id="nextButton">→</button>
-    </div>
+    </main>
 
     <script src="script.js"></script>
   </body>
