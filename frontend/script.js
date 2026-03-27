@@ -58,8 +58,8 @@ function switchCurrency(direction) {
     if (direction === "next") {
       currentIndex = (currentIndex + 1) % currencies.length;
     } else {
-      currentIndex =
-        currentIndex(currentIndex - 1 + currencies.length) % currencies.length;
+      currentIndex = currentIndex =
+        (currentIndex - 1 + currencies.length) % currencies.length;
     }
     currentCurrency = currencies[currentIndex];
 
